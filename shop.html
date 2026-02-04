@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Thatcher Davis</title>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        body {
+            background-image: url('https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_1300/v1715129487/qvkofnazak8zixpdxhmt.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+            animation: fadeIn 0.5s ease-in;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .donation-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .donation-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 200px;
+            transition: all 0.3s ease;
+        }
+        .donation-card:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+        .donation-card h3 {
+            margin: 0 0 10px 0;
+            color: #ffeb3b;
+        }
+        .donation-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .donation-card .price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #4fc3f7;
+            margin-top: 10px;
+        }
+        .message {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .message h3 {
+            margin-top: 0;
+            color: #ffeb3b;
+        }
+        .purchase-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4fc3f7;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .purchase-btn:hover {
+            background-color: #29b6f6;
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .modal-content h2 {
+            margin-top: 0;
+            color: #ffeb3b;
+        }
+        .close-modal {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .close-modal:hover {
+            background-color: #ff5252;
+        }
+    </style>
+    <script>
+        function showMessage(title) {
+            const modal = document.getElementById('messageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            modalTitle.textContent = title;
+            modal.classList.add('show');
+        }
+        function closeMessage() {
+            const modal = document.getElementById('messageModal');
+            modal.classList.remove('show');
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">My Games</a>
+        <a href="apps.html">My Apps</a>
+        <a href="shop.html">Shop</a>
+    </nav>
+    <div class="content">
+        <h1>Shop</h1>
+        <p>Welcome to my shop!</p>
+        <p>Check out our exclusive donation items below:</p>
+        
+        <div class="donation-items">
+            <div class="donation-card">
+                <h3>Bronze Supporter</h3>
+                <p>Get early access to new content</p>
+                <div class="price">$5</div>
+                <button class="purchase-btn" onclick="showMessage('Bronze Supporter')">Purchase</button>
+            </div>
+            <div class="donation-card">
+                <h3>Silver Supporter</h3>
+                <p>Special mention + exclusive badge</p>
+                <div class="price">$15</div>
+                <button class="purchase-btn" onclick="showMessage('Silver Supporter')">Purchase</button>
+            </div>
+            <div class="donation-card">
+                <h3>Gold Supporter</h3>
+                <p>VIP access + custom role</p>
+                <div class="price">$50</div>
+                <button class="purchase-btn" onclick="showMessage('Gold Supporter')">Purchase</button>
+            </div>
+            <div class="donation-card">
+                <h3>Platinum Supporter</h3>
+                <p>Everything + personal thank you</p>
+                <div class="price">$100</div>
+                <button class="purchase-btn" onclick="showMessage('Platinum Supporter')">Purchase</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="messageModal" onclick="closeMessage()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2 id="modalTitle">Thanks!</h2>
+            <p>I really appreciate the thought, but I don't need your money! 😄</p>
+            <p>Just enjoy exploring my portfolio and projects!</p>
+            <button class="close-modal" onclick="closeMessage()">Close</button>
+        </div>
+    </div>
+</body>
+</html>
