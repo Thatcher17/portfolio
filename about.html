@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Thatcher Davis</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <title>About Me - Thatcher</title>
     <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        * { box-sizing: border-box; }
         body {
             background-image: url('https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_1300/v1715129487/qvkofnazak8zixpdxhmt.jpg');
             background-size: cover;
@@ -17,6 +23,9 @@
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             min-height: 100vh;
+            animation: fadeIn 0.5s ease-in;
+            display: flex;
+            flex-direction: column;
         }
         nav {
             background-color: rgba(0, 0, 0, 0.8);
@@ -30,36 +39,232 @@
             color: white;
             text-decoration: none;
             padding: 10px 20px;
-            margin: 0 10px;
+            margin: 0 5px;
             display: inline-block;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
+        main { flex: 1; }
         .content {
-            padding: 20px;
+            padding: 30px;
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .content h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4fc3f7, #0288d1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
+        }
+        .profile-info {
+            text-align: left;
+            max-width: 400px;
+        }
+        .profile-info h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em;
+        }
+        .profile-info .subtitle {
+            color: #4fc3f7;
+            font-size: 1.1em;
+            margin: 0 0 15px 0;
+        }
+        .profile-info p {
+            line-height: 1.6;
+        }
+        .skills-section {
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
             max-width: 800px;
             margin: 20px auto;
             text-align: center;
+        }
+        .skills-section h2 {
+            color: #4fc3f7;
+            margin-top: 0;
+        }
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .skill {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 12px 20px;
+            transition: transform 0.3s, background-color 0.3s;
+            text-align: center;
+        }
+        .skill:hover {
+            transform: scale(1.08);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .skill .emoji {
+            font-size: 1.8em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .skill .name {
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .interests-section {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .interests-section h2 {
+            color: #ffeb3b;
+            margin-top: 0;
+        }
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .interest {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-size: 1em;
+            transition: transform 0.3s;
+        }
+        .interest:hover {
+            transform: translateY(-3px);
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #4fc3f7;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        footer a:hover { color: #81d4fa; }
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+        @media (max-width: 600px) {
+            nav a { padding: 8px 12px; margin: 2px; font-size: 0.9em; }
+            .content h1 { font-size: 1.8em; }
+            .profile-section { flex-direction: column; text-align: center; }
+            .profile-info { text-align: center; }
         }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html">Home</a>
+        <a href="games.html">My Games</a>
+        <a href="apps.html">My Apps</a>
         <a href="about.html">About Me</a>
-        <a href="#shop">Shop</a>
-        <a href="#contact">Contact</a>
     </nav>
-    <div class="content">
-        <h1>About Me</h1>
-        <p>Hi! I'm Thatcher Davis, a passionate creator and developer based in Vancouver, Canada.</p>
-        <p>I love building amazing websites and projects that make a difference. With a passion for creativity and technology, I strive to bring ideas to life through code and design.</p>
-        <p>Feel free to explore my portfolio to see what I've been working on!</p>
-    </div>
+    <main>
+        <div class="content">
+            <h1>👤 About Me</h1>
+        </div>
+
+        <div class="profile-section">
+            <div class="profile-avatar">👨‍💻</div>
+            <div class="profile-info">
+                <h2>Thatcher</h2>
+                <p class="subtitle">Creator & Developer</p>
+                <p>Hi! I'm a passionate creator and developer. I love building amazing websites and projects that make a difference. With a passion for creativity and technology, I strive to bring ideas to life through code and design.</p>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h2>🛠️ Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <span class="emoji">🌐</span>
+                    <span class="name">HTML</span>
+                </div>
+                <div class="skill">
+                    <span class="emoji">🎨</span>
+                    <span class="name">CSS</span>
+                </div>
+                <div class="skill">
+                    <span class="emoji">⚡</span>
+                    <span class="name">JavaScript</span>
+                </div>
+                <div class="skill">
+                    <span class="emoji">💻</span>
+                    <span class="name">VS Code</span>
+                </div>
+                <div class="skill">
+                    <span class="emoji">🐙</span>
+                    <span class="name">GitHub</span>
+                </div>
+                <div class="skill">
+                    <span class="emoji">🎮</span>
+                    <span class="name">Game Dev</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="interests-section">
+            <h2>✨ Interests</h2>
+            <div class="interests-list">
+                <div class="interest">🎮 Gaming</div>
+                <div class="interest">💻 Coding</div>
+                <div class="interest">🎨 Design</div>
+                <div class="interest">📱 App Development</div>
+                <div class="interest">🌐 Web Development</div>
+            </div>
+        </div>
+    </main>
+
+
 </body>
 </html>
